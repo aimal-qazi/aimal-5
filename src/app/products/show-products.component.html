@@ -1,0 +1,498 @@
+<div class="container">
+  <div class="left">
+    <button (click)="toggleAddProduct()" [disabled]="buttonDisable">
+      Add Product
+    </button>
+    <button (click)="toggleAddCategory()" [disabled]="buttonDisable">
+      Add Category
+    </button>
+    <button (click)="toggleAddVendor()" [disabled]="buttonDisable">
+      Add Vendor
+    </button>
+    <button (click)="toggleShowProduct()" [disabled]="buttonDisable">
+      Show Product
+    </button>
+    <button (click)="toggleShowCategory()" [disabled]="buttonDisable">
+      Show Category
+    </button>
+    <button (click)="toggleShowVendor()" [disabled]="buttonDisable">
+      Show Vendor
+    </button>
+    <button (click)="toggleShowProDelId()" [disabled]="buttonDisable">
+      Delete Product By Id
+    </button>
+    <button (click)="toggleShowProDelName()" [disabled]="buttonDisable">
+      Delete Product By Name
+    </button>
+    <button (click)="toggleProductCategory()" [disabled]="buttonDisable">
+      Get Product By Category
+    </button>
+    <button (click)="toggleProductVendor()" [disabled]="buttonDisable">
+      Get Product By Vendor
+    </button>
+    <button (click)="toggleProductCheap()" [disabled]="buttonDisable">
+      Get Product By Cheep price
+    </button>
+  </div>
+
+  <div class="right">
+    <!-- Add Product -->
+
+    <div class="addProduct" [hidden]="!showAddProduct">
+      <form (ngSubmit)="onProductForm()" [formGroup]="productForm">
+        <input
+          type="number"
+          placeholder="Enter Product Id"
+          formControlName="id"
+        />
+        <input
+          type="text"
+          placeholder="Enter Product Name"
+          formControlName="name"
+        />
+        <input
+          type="number"
+          placeholder="Enter Product Price"
+          formControlName="price"
+        />
+        <select formControlName="categoryId">
+          <option value="" selected disabled>Select Category Id</option>
+          <option value="{{ car.id }}" *ngFor="let car of Category">
+            {{ car.id }}
+          </option>
+        </select>
+        <select formControlName="vendorId">
+          <option value="" selected disabled>Select Vendor Id</option>
+          <option value="{{ vars.id }}" *ngFor="let vars of Vendor">
+            {{ vars.id }}
+          </option>
+        </select>
+        <p
+          class="err"
+          *ngIf="productForm.controls['id'].errors?.['required'] || productForm.controls['name'].errors?.['required'] || productForm.controls['price'].errors?.['required'] || productForm.controls['vendorId'].errors?.['required'] || productForm.controls['categoryId'].errors?.['required']"
+        >
+          * Please Fill All The Fields *
+        </p>
+        <div class="btn">
+          <button type="submit" [disabled]="productForm.invalid">Submit</button>
+          <button (click)="showAddProduct = false || (buttonDisable = false)">
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add Category -->
+
+    <div class="addCategory" [hidden]="!showAddCategory">
+      <form (ngSubmit)="onCategoryForm()" [formGroup]="categoryForm">
+        <input
+          type="number"
+          placeholder="Enter Category Id"
+          formControlName="id"
+        />
+        <input
+          type="text"
+          placeholder="Enter Category Name"
+          formControlName="name"
+        />
+        <select formControlName="status">
+          <option value="" selected disabled>Select Status</option>
+          <option value="Active">Active</option>
+          <option value="In-Active">In-Active</option>
+        </select>
+        <p
+          class="err"
+          *ngIf="categoryForm.controls['id'].errors?.['required'] || categoryForm.controls['name'].errors?.['required'] || categoryForm.controls['status'].errors?.['requried']"
+        >
+          * Please Fill All The Fields *
+        </p>
+        <div class="btn">
+          <button type="submit" [disabled]="categoryForm.invalid">
+            Submit
+          </button>
+          <button (click)="showAddCategory = false || (buttonDisable = false)">
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add Vendor -->
+
+    <div class="addVendor" [hidden]="!showAddVendor">
+      <form (ngSubmit)="onVendorForm()" [formGroup]="vendorForm">
+        <input
+          type="number"
+          placeholder="Enter Vendor Id"
+          formControlName="id"
+        />
+        <input
+          type="text"
+          placeholder="Enter Vendor First-Name"
+          formControlName="fname"
+        />
+        <input
+          type="text"
+          placeholder="Enter Vendor Last-Name"
+          formControlName="lname"
+        />
+        <input
+          type="number"
+          placeholder="Enter Vendor Number"
+          formControlName="phone"
+        />
+        <p
+          class="err"
+          *ngIf="vendorForm.controls['id'].errors?.['required'] || vendorForm.controls['fname'].errors?.['required'] || vendorForm.controls['lname'].errors?.['required'] || vendorForm.controls['phone'].errors?.['required']"
+        >
+          * Please Fill All The Fields *
+        </p>
+        <div class="btn">
+          <button type="submit" [disabled]="vendorForm.invalid">Submit</button>
+          <button (click)="showAddVendor = false || (buttonDisable = false)">
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Show Product -->
+
+    <div class="showProduct" [hidden]="!showProduct">
+      <button
+        class="btn"
+        (click)="showProduct = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">Product Tabel</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pro of Products">
+            <td>{{ pro.id }}</td>
+            <td>{{ pro.name }}</td>
+            <td>{{ pro.price }}</td>
+            <td>{{ pro.vendorId }}</td>
+            <td>{{ pro.categoryId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- show Category -->
+
+    <div class="showCategory" [hidden]="!showCategory">
+      <button
+        class="btn"
+        (click)="showCategory = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">Category Tabel</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of Category">
+            <td>{{ cat.id }}</td>
+            <td>{{ cat.name }}</td>
+            <td>{{ cat.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Show Vendor -->
+
+    <div class="showVendor" [hidden]="!showVendor">
+      <button
+        class="btn"
+        (click)="showVendor = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">Vendor Tabel</th>
+          </tr>
+          <tr>
+            <th>Id</th>
+            <th>First_Name</th>
+            <th>Last_Name</th>
+            <th>Contact_Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ven of Vendor">
+            <td>{{ ven.id }}</td>
+            <td>{{ ven.fname }}</td>
+            <td>{{ ven.lname }}</td>
+            <td>{{ ven.phone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Delete Product By Id -->
+
+    <div class="productByIdDel" [hidden]="!delProductId">
+      <button
+        class="btn"
+        (click)="delProductId = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <div class="inp">
+        <form (ngSubmit)="onProductDelById()" [formGroup]="productDelById">
+          <input
+            type="text"
+            placeholder="Enter Product Id"
+            formControlName="pId"
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Products; let i = index">
+            <td *ngIf="item.id == proDelId">{{ item.id }}</td>
+            <td *ngIf="item.id == proDelId">{{ item.name }}</td>
+            <td *ngIf="item.id == proDelId">{{ item.price }}</td>
+            <td *ngIf="item.id == proDelId">{{ item.vendorId }}</td>
+            <td *ngIf="item.id == proDelId">{{ item.categoryId }}</td>
+            <td *ngIf="item.id == proDelId">
+              <button
+                style="
+                  border: 0;
+                  background: #3e7efc;
+                  color: white;
+                  padding: 5px;
+                  cursor: pointer;
+                "
+                (click)="delId(i)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Delete Product By Name -->
+
+    <div class="productByNameDel" [hidden]="!delProductName">
+      <button
+        class="btn"
+        (click)="delProductName = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <div class="inp">
+        <form (ngSubmit)="onProductDelByName()" [formGroup]="productDelByName">
+          <input
+            type="text"
+            placeholder="Enter Product Name"
+            formControlName="pName"
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Products; let i = index">
+            <td *ngIf="item.name == proDelName">{{ item.id }}</td>
+            <td *ngIf="item.name == proDelName">{{ item.name }}</td>
+            <td *ngIf="item.name == proDelName">{{ item.price }}</td>
+            <td *ngIf="item.name == proDelName">{{ item.vendorId }}</td>
+            <td *ngIf="item.name == proDelName">{{ item.categoryId }}</td>
+            <td *ngIf="item.name == proDelName">
+              <button
+                style="
+                  border: 0;
+                  background: #3e7efc;
+                  color: white;
+                  padding: 5px;
+                  cursor: pointer;
+                "
+                (click)="delName(i)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Show Product By Vendor -->
+
+    <div class="productByVendor" [hidden]="!productVendor">
+      <button
+        class="btn"
+        (click)="productVendor = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <div class="inp">
+        <form (ngSubmit)="onProductByVendor()" [formGroup]="productByVendor">
+          <input
+            type="text"
+            placeholder="Enter Product Vendor_Id"
+            formControlName="ven"
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Products">
+            <td *ngIf="item.vendorId == proVendor">{{ item.id }}</td>
+            <td *ngIf="item.vendorId == proVendor">{{ item.name }}</td>
+            <td *ngIf="item.vendorId == proVendor">{{ item.price }}</td>
+            <td *ngIf="item.vendorId == proVendor">{{ item.vendorId }}</td>
+            <td *ngIf="item.vendorId == proVendor">{{ item.categoryId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Product By Category -->
+
+    <div class="productByCategory" [hidden]="!productCategory">
+      <button
+        class="btn"
+        (click)="productCategory = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <div class="inp">
+        <form
+          (ngSubmit)="onProductByCategory()"
+          [formGroup]="productByCategory"
+        >
+          <input
+            type="text"
+            placeholder="Enter Product Category_Id"
+            formControlName="cat"
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Products">
+            <td *ngIf="item.categoryId == proCategory">{{ item.id }}</td>
+            <td *ngIf="item.categoryId == proCategory">{{ item.name }}</td>
+            <td *ngIf="item.categoryId == proCategory">{{ item.price }}</td>
+            <td *ngIf="item.categoryId == proCategory">{{ item.vendorId }}</td>
+            <td *ngIf="item.categoryId == proCategory">
+              {{ item.categoryId }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Products By Cheap Price -->
+
+    <div class="productByCheap" [hidden]="!productCheap">
+      <button
+        class="btn"
+        (click)="productCheap = false || (buttonDisable = false)"
+      >
+        Close
+      </button>
+      <div class="inp">
+        <form (ngSubmit)="onProductByCheap()" [formGroup]="productByCheap">
+          <input
+            type="text"
+            placeholder="Enter Maximum Price"
+            formControlName="cheap"
+          />
+          <button type="submit">Find</button>
+        </form>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Vendor_Id</th>
+            <th>Category_Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Products">
+            <td *ngIf="item.price <= proCheap">{{ item.id }}</td>
+            <td *ngIf="item.price <= proCheap">{{ item.name }}</td>
+            <td *ngIf="item.price <= proCheap">{{ item.price }}</td>
+            <td *ngIf="item.price <= proCheap">{{ item.vendorId }}</td>
+            <td *ngIf="item.price <= proCheap">
+              {{ item.categoryId }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

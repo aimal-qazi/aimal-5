@@ -1,0 +1,343 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background: rgb(198, 238, 252);
+}
+.err {
+  color: red;
+}
+.container .left {
+  width: 17%;
+  min-height: 100vh;
+  background: white;
+  border-right: 1px solid #ccc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.container .left button {
+  width: 93%;
+  padding: 10px 0;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.right {
+  width: 83%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addProduct form {
+  width: 400px;
+  min-height: 200px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  padding: 15px 20px;
+}
+.addProduct form input {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addProduct form select {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addProduct form .btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.addProduct form button {
+  width: fit-content;
+  padding: 10px 40px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.addCategory form {
+  width: 400px;
+  min-height: 200px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  padding: 15px 20px;
+}
+.addCategory form input {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addCategory form select {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addCategory form .btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.addCategory form button {
+  width: fit-content;
+  padding: 10px 40px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.addVendor form {
+  width: 400px;
+  min-height: 200px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  padding: 15px 20px;
+}
+.addVendor form input {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addVendor form select {
+  padding: 10px 5px;
+  font-size: 15px;
+}
+.addVendor form .btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.addVendor form button {
+  width: fit-content;
+  padding: 10px 40px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.showProduct .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.showCategory .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.showVendor .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.productByVendor .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+.productByVendor .inp form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.productByVendor .inp form input {
+  flex: 1;
+  padding: 10px 5px;
+}
+.productByVendor .inp form button {
+  padding: 0 20px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  cursor: pointer;
+}
+
+.productByCategory .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+.productByCategory .inp form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.productByCategory .inp form input {
+  flex: 1;
+  padding: 10px 5px;
+}
+.productByCategory .inp form button {
+  padding: 0 20px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  cursor: pointer;
+}
+
+.productByCheap .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+.productByCheap .inp form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.productByCheap .inp form input {
+  flex: 1;
+  padding: 10px 5px;
+}
+.productByCheap .inp form button {
+  padding: 0 20px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  cursor: pointer;
+}
+
+.productByIdDel .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+.productByIdDel .inp form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.productByIdDel .inp form input {
+  flex: 1;
+  padding: 10px 5px;
+}
+.productByIdDel .inp form button {
+  padding: 0 20px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  cursor: pointer;
+}
+
+.productByNameDel .btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 30px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 15px;
+}
+.productByNameDel .inp form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.productByNameDel .inp form input {
+  flex: 1;
+  padding: 10px 5px;
+}
+.productByNameDel .inp form button {
+  padding: 0 20px;
+  border: 0;
+  background: #3e7efc;
+  color: white;
+  cursor: pointer;
+}
+
+table {
+  background: white;
+  border-collapse: collapse;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+tr th,
+tr td {
+  padding: 10px 20px;
+  border: 1px solid #666;
+}
